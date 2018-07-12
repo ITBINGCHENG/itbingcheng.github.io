@@ -123,18 +123,24 @@
 
 
 
-<meta name="description" content="想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行">
+<meta name="description" content="AppVeyor是目前唯一支持.NET开源项目的持续集成功能，运行环境是Windows，身为.NET开发者和软粉的我，怎么不支持一下这个有情怀的服务商呢？ 太晚了，挖坑，明天继续写。 第一步，创建CI项目访问AppVeyor网站，注册或使用Github帐号授权登录，在PROJECTS页面点击【NEW PROJECT】，然后在右侧选择你的Hexo博客所在的仓库。 第二步，配置项目和环境变量点击项目里">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo的版本控制与持续集成">
 <meta property="og:url" content="http://yoursite.com/2018/07/12/post11/index.html">
 <meta property="og:site_name" content="ORANGE">
-<meta property="og:description" content="想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行">
+<meta property="og:description" content="AppVeyor是目前唯一支持.NET开源项目的持续集成功能，运行环境是Windows，身为.NET开发者和软粉的我，怎么不支持一下这个有情怀的服务商呢？ 太晚了，挖坑，明天继续写。 第一步，创建CI项目访问AppVeyor网站，注册或使用Github帐号授权登录，在PROJECTS页面点击【NEW PROJECT】，然后在右侧选择你的Hexo博客所在的仓库。 第二步，配置项目和环境变量点击项目里">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-12T15:25:50.933Z">
+<meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-1.jpg">
+<meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-2.jpg">
+<meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-3.jpg">
+<meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-4.jpg">
+<meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-5.jpg">
+<meta property="og:updated_time" content="2018-07-12T16:06:46.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo的版本控制与持续集成">
-<meta name="twitter:description" content="想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行">
+<meta name="twitter:description" content="AppVeyor是目前唯一支持.NET开源项目的持续集成功能，运行环境是Windows，身为.NET开发者和软粉的我，怎么不支持一下这个有情怀的服务商呢？ 太晚了，挖坑，明天继续写。 第一步，创建CI项目访问AppVeyor网站，注册或使用Github帐号授权登录，在PROJECTS页面点击【NEW PROJECT】，然后在右侧选择你的Hexo博客所在的仓库。 第二步，配置项目和环境变量点击项目里">
+<meta name="twitter:image" content="http://ohl8u210m.bkt.clouddn.com/11-1.jpg">
 
 
 
@@ -358,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/转载/" itemprop="url" rel="index">
+                    <span itemprop="name">转载</span>
                   </a>
                 </span>
 
@@ -395,12 +401,52 @@
       
 
       
-        <p>想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行备份，但是每次更新完博客，需要备份好源文件，然后执行hexo deploy进行发布，是不是很麻烦？换了电脑之后又要重新搭建本地环境，是不是很蛋疼？那么接下来我们就来说说如何优雅愉快地对我们的Hexo进行版本管理和发布。既然我们已经用了GitHub来托管我们生成出来的静态网站，那么为什么不也把Hexo博客的源文件也host在GitHub上呢。那么问题来了，如果我们把Hexo博客的源文件托管在GitHub上，我们的发布流程就会变为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.执行git push把更新的源文件push到托管源文件的GitHub Repo (我们称之为Source Repo)</span><br><span class="line">2. 执行hexo deploy来更新托管静态网站的GitHub Pages (我们称之为Content Repo)</span><br></pre></td></tr></table></figure></p>
-<p>这样看来，每次更新博客要经历两个步骤，并不是那么straightforward。那么有没有办法做到既能使用GitHub进行版本控制，又能做到一键发布呢？答案是肯定的。这里用到了持续集成也就是我们一直所说的CI来完成一键发布：当有新的change push到Source Repo时，自动执行CI脚本，生成最新的静态网站发布到Content Repo，一气呵成。那么我使用什么CI工具来做呢？我们可以使用像Travis CI这样的Hosted CI Service，也可以使用Jenkins或者TeamCity来搭建CI server。如果自己来搭建CI Server，费时费力，又要花钱来买Server来host CI service，肯定不是一个很好的选择。那么我们选哪个Hosted CI Service呢？其实今年在公司的一个项目中我们就选择了AppVeyor。当初在做investigation的时候，第一个想到的就是用Travis CI，然而我司大多数的开发环境都是Windows，而且当时的项目有Python, PowerShell, Java等，那时PowerShell还只支持Windows，所以需要选择一个支持Windows的CI Service。于是，Scott Hanselman安利的AppVeyor就成为了一个备选。访问AppVeyor官网，映入眼帘的大标题就是#1 Continuous Delivery service for Windows。刚开始的时候内心一阵嘲笑，Top 10的CI Service就你支持Windows，你不是第一那谁是第一？结果在之后的项目使用中，发现AppVeyor比Travis CI好用太多。这里就不具体展开了，继续进入正题。使用AppVeyor来建立CI非常方便，主要是以下步骤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 注册并登陆AppVeyor访问AppVeyor登陆页面，使用你的GitHub账号登陆即可。</span><br><span class="line">2. 添加Project在AppVeyor Projects页面，添加相应的GitHub Source Repo。</span><br><span class="line">3. 添加appveyor.yml到Source Repo接下来，你需要把appveyor.yml添加到Source Repo的根目录下。</span><br></pre></td></tr></table></figure></p>
-<p>具体的appveyor.yml如下，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">clone_depth: 5</span><br><span class="line"></span><br><span class="line">environment:</span><br><span class="line">  access_token:</span><br><span class="line">    secure: l4TZBH5gIXLHfint53gwf5WnP0jS41WYa5CflTQ+1YjhTh03kGSHXGYG51s+3Fjy</span><br><span class="line"></span><br><span class="line">install:</span><br><span class="line">  - node --version</span><br><span class="line">  - npm --version</span><br><span class="line">  - npm install</span><br><span class="line">  - npm install hexo-cli -g</span><br><span class="line"></span><br><span class="line">build_script:</span><br><span class="line">  - hexo generate</span><br><span class="line"></span><br><span class="line">artifacts:</span><br><span class="line">  - path: public</span><br><span class="line"></span><br><span class="line">on_success:</span><br><span class="line">  - git config --global credential.helper store</span><br><span class="line">  - ps: Add-Content &quot;$env:USERPROFILE\.git-credentials&quot; &quot;https://$($env:access_token):x-oauth-basic@github.com`n&quot;</span><br><span class="line">  - git config --global user.email &quot;%GIT_USER_EMAIL%&quot;</span><br><span class="line">  - git config --global user.name &quot;%GIT_USER_NAME%&quot;</span><br><span class="line">  - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site</span><br><span class="line">  - cd %TEMP%\static-site</span><br><span class="line">  - del * /f /q</span><br><span class="line">  - for /d %%p IN (*) do rmdir &quot;%%p&quot; /s /q</span><br><span class="line">  - SETLOCAL EnableDelayedExpansion &amp; robocopy &quot;%APPVEYOR_BUILD_FOLDER%\public&quot; &quot;%TEMP%\static-site&quot; /e &amp; IF !ERRORLEVEL! EQU 1 (exit 0) ELSE (IF !ERRORLEVEL! EQU 3 (exit 0) ELSE (exit 1))</span><br><span class="line">  - git add -A</span><br><span class="line">  - if &quot;%APPVEYOR_REPO_BRANCH%&quot;==&quot;master&quot; if not defined APPVEYOR_PULL_REQUEST_NUMBER (git diff --quiet --exit-code --cached || git commit -m &quot;Update Static Site&quot; &amp;&amp; git push origin %TARGET_BRANCH% &amp;&amp; appveyor AddMessage &quot;Static Site Updated&quot;)</span><br></pre></td></tr></table></figure></p>
-<p>你唯一需要做的就是替换[Your GitHub Access Token]，关于生成Access Token，可以参考这篇文章。在GitHub生成好Access Token之后，你需要到AppVeyor加密页面把Access Token加密之后再替换[Your GitHub Access Token]</p>
-<p>4.设置Appveyor添加好appveyor.yml之后，再到Appveyor portal设置以下四个变量。STATIC_SITE_REPO就是Content Repo的地址，TARGET_BRANCH就是你Content Repo的branch，一般默认就是master，GIT_USER_EMAIL和GIT_USER_NAME就是你GitHub账号的信息</p>
-<p>好了，一切大功告成！试一下git push你的change到Source Repo，几分钟内，你的博客就自动更新了！背后的过程如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. Git push to Source Repo</span><br><span class="line">2. –&gt; AppVeyor CI</span><br><span class="line">3. –&gt; Update GitHub Pages Content Repo</span><br><span class="line">4. –&gt; Generate your Hexo blog site</span><br></pre></td></tr></table></figure></p>
+        <p>AppVeyor是目前唯一支持.NET开源项目的持续集成功能，运行环境是Windows，身为.NET开发者和软粉的我，怎么不支持一下这个有情怀的服务商呢？</p>
+<p>太晚了，挖坑，明天继续写。</p>
+<h4 id="第一步，创建CI项目"><a href="#第一步，创建CI项目" class="headerlink" title="第一步，创建CI项目"></a>第一步，创建CI项目</h4><p>访问AppVeyor网站，注册或使用Github帐号授权登录，在PROJECTS页面点击【NEW PROJECT】，然后在右侧选择你的Hexo博客所在的仓库。<br><img src="http://ohl8u210m.bkt.clouddn.com/11-1.jpg" alt="11-1"></p>
+<h4 id="第二步，配置项目和环境变量"><a href="#第二步，配置项目和环境变量" class="headerlink" title="第二步，配置项目和环境变量"></a>第二步，配置项目和环境变量</h4><p>点击项目里的[SETTING]选项卡，配置以下几项：</p>
+<p>Default branch -&gt; [你存放原文件的分支名]<br>Branches to build -&gt; 选择Only branches specified below,并填入[你存放原文件的分支名]<br>如下图，然后点击一下下方的Save按钮。<br><img src="http://ohl8u210m.bkt.clouddn.com/11-2.jpg" alt="11-2"></p>
+<p>点击右侧的Environment标签，添加环境变量:</p>
+<table>
+<thead>
+<tr>
+<th>左对齐标题</th>
+<th>右对齐标题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STATIC_SITE_REPO</td>
+<td>你的仓库地址</td>
+</tr>
+<tr>
+<td>TARGET_BRANCH</td>
+<td>编译后文件存放的分支</td>
+</tr>
+<tr>
+<td>GIT_USER_EMAIL</td>
+<td>Github的用户邮箱</td>
+</tr>
+<tr>
+<td>GIT_USER_NAME</td>
+<td>Github用户名</td>
+</tr>
+</tbody>
+</table>
+<p>如下图，然后点击一下下方的Save按钮。<br><img src="http://ohl8u210m.bkt.clouddn.com/11-3.jpg" alt="11-3"></p>
+<h4 id="第三步，获取Access-Token"><a href="#第三步，获取Access-Token" class="headerlink" title="第三步，获取Access Token"></a>第三步，获取Access Token</h4><p>访问个人设置页面：<br><img src="http://ohl8u210m.bkt.clouddn.com/11-4.jpg" alt="11-4"></p>
+<p>点击边栏下方的【Personal access tokens】选项卡，并点击右上方的【Generate new token】按钮。Token description任意填写，下方的选项中全选repo即可。</p>
+<p>最后，点击下方绿色的【Generate token】按钮。此时就能得到你的Access Token。</p>
+<p>也可以参考官方文档</p>
+<h4 id="第四步，加密Access-Token"><a href="#第四步，加密Access-Token" class="headerlink" title="第四步，加密Access Token"></a>第四步，加密Access Token</h4><p>由于这个AccessToken是可以直接操作你的仓库的，而且配置文件是公开的，所以这时就要求对AccessToken进行加密。可到<a href="https://ci.appveyor.com/tools/encrypt" target="_blank" rel="noopener">AppVeyor Token加密页面</a>进行加密。把加密后的字符串填入下一步中的配置文件里。</p>
+<h4 id="第五步，配置文件"><a href="#第五步，配置文件" class="headerlink" title="第五步，配置文件"></a>第五步，配置文件</h4><p>在Hexo的根目录下新建一个appveyor.yml文件，写下以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">clone_depth: 5</span><br><span class="line"># 这里是限制了只编译有源文件的分支，这样在创建了其它分支时就不会再次编译了</span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">  - files#此处填写源码所在分支名</span><br><span class="line">environment:</span><br><span class="line">  access_token:</span><br><span class="line">    secure: #加密后的access_token</span><br><span class="line">install:</span><br><span class="line">  - ps: Install-Product node 6.0 #原始环境的node 是4.x的版本，最好升级到最新的版本，防止Hexo的插件无法安装</span><br><span class="line">  - node --version</span><br><span class="line">  - npm --version</span><br><span class="line">  - npm install</span><br><span class="line">  - npm install hexo-cli -g</span><br><span class="line">build_script:</span><br><span class="line">  - hexo generate</span><br><span class="line">artifacts:</span><br><span class="line">  - path: public</span><br><span class="line">on_success:</span><br><span class="line">  - git config --global credential.helper store</span><br><span class="line">  - ps: Add-Content &quot;$env:USERPROFILE\.git-credentials&quot; &quot;https://$($env:access_token):x-oauth-basic@github.com`n&quot;</span><br><span class="line">  - git config --global user.email &quot;%GIT_USER_EMAIL%&quot;</span><br><span class="line">  - git config --global user.name &quot;%GIT_USER_NAME%&quot;</span><br><span class="line">  - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site</span><br><span class="line">  - cd %TEMP%\static-site</span><br><span class="line">  - del * /f /q</span><br><span class="line">  - for /d %%p IN (*) do rmdir &quot;%%p&quot; /s /q</span><br><span class="line">  - SETLOCAL EnableDelayedExpansion &amp; robocopy &quot;%APPVEYOR_BUILD_FOLDER%\public&quot; &quot;%TEMP%\static-site&quot; /e &amp; IF !ERRORLEVEL! EQU 1 (exit 0) ELSE (IF !ERRORLEVEL! EQU 3 (exit 0) ELSE (exit 1))</span><br><span class="line">  - git add -A</span><br><span class="line">  - git commit -m &quot;Update Static Site&quot;</span><br><span class="line">  - git push origin %TARGET_BRANCH%</span><br><span class="line">  - appveyor AddMessage &quot;Static Site Updated&quot;</span><br></pre></td></tr></table></figure></p>
+<p>大致的意思是从github仓库的当前分支拉取下来，编译成静态文件后，在push到目标分支。由于AppVeyor环境中是通过Access Token访问我们的仓库的，而Hexo自带的部署则在访问的过程中需要我们输入帐号密码，所以Hexo g -d的命令就不适合在这里使用。需要先编译成静态文件，再把public文件夹的静态文件push到目标分支。</p>
+<p>最后，把这个文件提交到Github上就可以测试了！在AppVeyor的首页可以看到部署的过程和结果~<br><img src="http://ohl8u210m.bkt.clouddn.com/11-5.jpg" alt="11-5"></p>
+<p>别说我没告诉你，还可以添加一枚徽章装装逼哦！Build status</p>
+<p>可以看看我的配置文件，以及底部的两篇参考文章~</p>
+<p>参考文章：</p>
+<p><a href="https://formulahendry.github.io/2016/12/04/hexo-ci/" target="_blank" rel="noopener">Hexo利用AppVeyor持续集成</a></p>
+<p>原文链接：<a href="https://yangshunjie.com/Use-Appveyor-to-continuously-integrate-your-Hexo-blog.html" target="_blank" rel="noopener">https://yangshunjie.com/Use-Appveyor-to-continuously-integrate-your-Hexo-blog.html</a></p>
 
       
     </div>
@@ -519,8 +565,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -550,7 +605,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -600,6 +655,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步，创建CI项目"><span class="nav-number">1.</span> <span class="nav-text">第一步，创建CI项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步，配置项目和环境变量"><span class="nav-number">2.</span> <span class="nav-text">第二步，配置项目和环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步，获取Access-Token"><span class="nav-number">3.</span> <span class="nav-text">第三步，获取Access Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步，加密Access-Token"><span class="nav-number">4.</span> <span class="nav-text">第四步，加密Access Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第五步，配置文件"><span class="nav-number">5.</span> <span class="nav-text">第五步，配置文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
