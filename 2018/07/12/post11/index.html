@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hexo," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo的版本控制与持续集成">
+<meta property="og:url" content="http://yoursite.com/2018/07/12/post11/index.html">
+<meta property="og:site_name" content="ORANGE">
+<meta property="og:description" content="想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-12T15:15:13.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo的版本控制与持续集成">
+<meta name="twitter:description" content="想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/12/post11/"/>
+
+
+
+
+
+  <title>Hexo的版本控制与持续集成 | ORANGE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ORANGE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/12/post11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BINGCHENG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ORANGE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hexo的版本控制与持续集成</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T12:23:57+00:00">
+                2018-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行备份，但是每次更新完博客，需要备份好源文件，然后执行hexo deploy进行发布，是不是很麻烦？换了电脑之后又要重新搭建本地环境，是不是很蛋疼？那么接下来我们就来说说如何优雅愉快地对我们的Hexo进行版本管理和发布。既然我们已经用了GitHub来托管我们生成出来的静态网站，那么为什么不也把Hexo博客的源文件也host在GitHub上呢。那么问题来了，如果我们把Hexo博客的源文件托管在GitHub上，我们的发布流程就会变为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.执行git push把更新的源文件push到托管源文件的GitHub Repo (我们称之为Source Repo)</span><br><span class="line">2. 执行hexo deploy来更新托管静态网站的GitHub Pages (我们称之为Content Repo)</span><br></pre></td></tr></table></figure></p>
+<p>这样看来，每次更新博客要经历两个步骤，并不是那么straightforward。那么有没有办法做到既能使用GitHub进行版本控制，又能做到一键发布呢？答案是肯定的。这里用到了持续集成也就是我们一直所说的CI来完成一键发布：当有新的change push到Source Repo时，自动执行CI脚本，生成最新的静态网站发布到Content Repo，一气呵成。那么我使用什么CI工具来做呢？我们可以使用像Travis CI这样的Hosted CI Service，也可以使用Jenkins或者TeamCity来搭建CI server。如果自己来搭建CI Server，费时费力，又要花钱来买Server来host CI service，肯定不是一个很好的选择。那么我们选哪个Hosted CI Service呢？其实今年在公司的一个项目中我们就选择了AppVeyor。当初在做investigation的时候，第一个想到的就是用Travis CI，然而我司大多数的开发环境都是Windows，而且当时的项目有Python, PowerShell, Java等，那时PowerShell还只支持Windows，所以需要选择一个支持Windows的CI Service。于是，Scott Hanselman安利的AppVeyor就成为了一个备选。访问AppVeyor官网，映入眼帘的大标题就是#1 Continuous Delivery service for Windows。刚开始的时候内心一阵嘲笑，Top 10的CI Service就你支持Windows，你不是第一那谁是第一？结果在之后的项目使用中，发现AppVeyor比Travis CI好用太多。这里就不具体展开了，继续进入正题。使用AppVeyor来建立CI非常方便，主要是以下步骤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 注册并登陆AppVeyor访问AppVeyor登陆页面，使用你的GitHub账号登陆即可。</span><br><span class="line">2. 添加Project在AppVeyor Projects页面，添加相应的GitHub Source Repo。</span><br><span class="line">3. 添加appveyor.yml到Source Repo接下来，你需要把appveyor.yml添加到Source Repo的根目录下。</span><br></pre></td></tr></table></figure></p>
+<p>具体的appveyor.yml如下，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">clone_depth: 5</span><br><span class="line"></span><br><span class="line">environment:</span><br><span class="line">  access_token:</span><br><span class="line">    secure: l4TZBH5gIXLHfint53gwf5WnP0jS41WYa5CflTQ+1YjhTh03kGSHXGYG51s+3Fjy</span><br><span class="line"></span><br><span class="line">install:</span><br><span class="line">  - node --version</span><br><span class="line">  - npm --version</span><br><span class="line">  - npm install</span><br><span class="line">  - npm install hexo-cli -g</span><br><span class="line"></span><br><span class="line">build_script:</span><br><span class="line">  - hexo generate</span><br><span class="line"></span><br><span class="line">artifacts:</span><br><span class="line">  - path: public</span><br><span class="line"></span><br><span class="line">on_success:</span><br><span class="line">  - git config --global credential.helper store</span><br><span class="line">  - ps: Add-Content &quot;$env:USERPROFILE\.git-credentials&quot; &quot;https://$($env:access_token):x-oauth-basic@github.com`n&quot;</span><br><span class="line">  - git config --global user.email &quot;%GIT_USER_EMAIL%&quot;</span><br><span class="line">  - git config --global user.name &quot;%GIT_USER_NAME%&quot;</span><br><span class="line">  - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site</span><br><span class="line">  - cd %TEMP%\static-site</span><br><span class="line">  - del * /f /q</span><br><span class="line">  - for /d %%p IN (*) do rmdir &quot;%%p&quot; /s /q</span><br><span class="line">  - SETLOCAL EnableDelayedExpansion &amp; robocopy &quot;%APPVEYOR_BUILD_FOLDER%\public&quot; &quot;%TEMP%\static-site&quot; /e &amp; IF !ERRORLEVEL! EQU 1 (exit 0) ELSE (IF !ERRORLEVEL! EQU 3 (exit 0) ELSE (exit 1))</span><br><span class="line">  - git add -A</span><br><span class="line">  - if &quot;%APPVEYOR_REPO_BRANCH%&quot;==&quot;master&quot; if not defined APPVEYOR_PULL_REQUEST_NUMBER (git diff --quiet --exit-code --cached || git commit -m &quot;Update Static Site&quot; &amp;&amp; git push origin %TARGET_BRANCH% &amp;&amp; appveyor AddMessage &quot;Static Site Updated&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>你唯一需要做的就是替换[Your GitHub Access Token]，关于生成Access Token，可以参考这篇文章。在GitHub生成好Access Token之后，你需要到AppVeyor加密页面把Access Token加密之后再替换[Your GitHub Access Token]</p>
+<p>4.设置Appveyor添加好appveyor.yml之后，再到Appveyor portal设置以下四个变量。STATIC_SITE_REPO就是Content Repo的地址，TARGET_BRANCH就是你Content Repo的branch，一般默认就是master，GIT_USER_EMAIL和GIT_USER_NAME就是你GitHub账号的信息</p>
+<p>好了，一切大功告成！试一下git push你的change到Source Repo，几分钟内，你的博客就自动更新了！背后的过程如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. Git push to Source Repo</span><br><span class="line">2. –&gt; AppVeyor CI</span><br><span class="line">3. –&gt; Update GitHub Pages Content Repo</span><br><span class="line">4. –&gt; Generate your Hexo blog site</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/zs.png" alt="BINGCHENG 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/post9/" rel="next" title="hexo部署到GitHub懵逼版">
+                <i class="fa fa-chevron-left"></i> hexo部署到GitHub懵逼版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/12/movie/" rel="prev" title="还不错的电影">
+                还不错的电影 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="BINGCHENG" />
+            
+              <p class="site-author-name" itemprop="name">BINGCHENG</p>
+              <p class="site-description motion-element" itemprop="description">自强不息</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bingcheng94@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/xxzzdd" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BINGCHENG</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
