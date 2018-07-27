@@ -148,7 +148,7 @@
 <meta property="og:image" content="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2505050710.webp">
 <meta property="og:image" content="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2166843862.webp">
 <meta property="og:image" content="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1751906355.webp">
-<meta property="og:updated_time" content="2018-07-26T16:17:05.298Z">
+<meta property="og:updated_time" content="2018-07-27T03:02:35.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="还不错的电影">
 <meta name="twitter:description" content="2018年7月12日13:35:56 辩护人（韩） 多啦A梦：新·大雄的日本诞生（日漫）2018年5月17日21:51:57 现在去见你（韩） 迷雾(韩剧) 深夜食堂(日) 与神同行(韩) 2018年2月21日 1987:黎明到来的那一天(韩) 2018年2月7日 铁雨(韩) 危险的传言(韩) 我是杀人犯(韩)">
@@ -399,6 +399,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/12/movie/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/12/movie/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -537,6 +547,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -848,6 +861,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6WA3giEtacfNM9HXW1cDREaf-gzGzoHsz',
+        appKey: 'E7oCfyoHxuYq1dTIDJ1YkonA',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'/uploads/cz.jpg',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

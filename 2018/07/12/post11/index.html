@@ -143,7 +143,7 @@
 <meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-3.jpg">
 <meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-4.jpg">
 <meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/11-5.jpg">
-<meta property="og:updated_time" content="2018-07-26T16:17:05.298Z">
+<meta property="og:updated_time" content="2018-07-27T03:02:35.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo的版本控制与持续集成">
 <meta name="twitter:description" content="AppVeyor是目前唯一支持.NET开源项目的持续集成功能，运行环境是Windows，身为.NET开发者和软粉的我，怎么不支持一下这个有情怀的服务商呢？ 太晚了，挖坑，明天继续写。 第一步，创建CI项目访问AppVeyor网站，注册或使用Github帐号授权登录，在PROJECTS页面点击【NEW PROJECT】，然后在右侧选择你的Hexo博客所在的仓库。 第二步，配置项目和环境变量点击项目里">
@@ -394,6 +394,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/12/post11/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/12/post11/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -565,6 +575,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -876,6 +889,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6WA3giEtacfNM9HXW1cDREaf-gzGzoHsz',
+        appKey: 'E7oCfyoHxuYq1dTIDJ1YkonA',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'/uploads/cz.jpg',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

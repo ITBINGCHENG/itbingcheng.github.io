@@ -139,7 +139,7 @@
 <meta property="og:description" content="作者:碟叔 老道消息清朝有个文人叫钮琇，他记载过一个故事： 有一天，翰林院的几个文人聊天，谈起家乡的土特产。广东人说家乡产象牙犀角；陕西人说家乡产狐裘皮毡；山东人说家乡产山珍海味。只有汪琬一句话不说。有人调侃他，苏州自称天下名郡，你又是苏州人，怎么会不知道苏州的特产呢？ 汪琬就说了，苏州只有两样特产。众人忙问哪两样，汪琬回答，一是梨园子弟。大家抚掌称妙，追问另一样是什么。汪琬慢吞吞地说，二是苏州状">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/3-1.jpeg">
-<meta property="og:updated_time" content="2018-07-26T16:17:05.330Z">
+<meta property="og:updated_time" content="2018-07-27T03:02:35.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大明亡于《五年高考，三年模拟》">
 <meta name="twitter:description" content="作者:碟叔 老道消息清朝有个文人叫钮琇，他记载过一个故事： 有一天，翰林院的几个文人聊天，谈起家乡的土特产。广东人说家乡产象牙犀角；陕西人说家乡产狐裘皮毡；山东人说家乡产山珍海味。只有汪琬一句话不说。有人调侃他，苏州自称天下名郡，你又是苏州人，怎么会不知道苏州的特产呢？ 汪琬就说了，苏州只有两样特产。众人忙问哪两样，汪琬回答，一是梨园子弟。大家抚掌称妙，追问另一样是什么。汪琬慢吞吞地说，二是苏州状">
@@ -390,6 +390,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/04/post3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/04/post3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -616,6 +626,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -902,6 +915,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6WA3giEtacfNM9HXW1cDREaf-gzGzoHsz',
+        appKey: 'E7oCfyoHxuYq1dTIDJ1YkonA',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'/uploads/cz.jpg',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

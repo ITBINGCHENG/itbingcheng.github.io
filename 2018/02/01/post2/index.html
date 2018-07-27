@@ -139,7 +139,7 @@
 <meta property="og:description" content="在vps上面安装Aria2实现离线下载。 本教程共三个部分 一、安装aria21、安装aria2的方法很简单，一条命令就够了 centos 7：  yum install epel-release  yum install aria2  ubuntu： apt-get install aria2  如果出现【Unable to locate package aria2】或者【No package">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/2-1.jpg">
-<meta property="og:updated_time" content="2018-07-26T16:17:05.314Z">
+<meta property="og:updated_time" content="2018-07-27T03:02:35.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VPS安装Aria2+WEBUI搭建离线下载神器">
 <meta name="twitter:description" content="在vps上面安装Aria2实现离线下载。 本教程共三个部分 一、安装aria21、安装aria2的方法很简单，一条命令就够了 centos 7：  yum install epel-release  yum install aria2  ubuntu： apt-get install aria2  如果出现【Unable to locate package aria2】或者【No package">
@@ -389,6 +389,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/post2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/01/post2/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -729,6 +739,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -1039,6 +1052,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6WA3giEtacfNM9HXW1cDREaf-gzGzoHsz',
+        appKey: 'E7oCfyoHxuYq1dTIDJ1YkonA',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'/uploads/cz.jpg',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

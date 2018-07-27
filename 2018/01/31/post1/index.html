@@ -139,7 +139,7 @@
 <meta property="og:description" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  今天是公历一月份最后一天，也是我的生日，要不是昨天老妈提醒我，我自己都要忘了。早上爸妈专门发红包，爸爸发了88，妈妈发了66，爸妈的意思我心里明白，美滋滋呀。算算自己23周岁了，真的是不小了。 不知道为什么，到生日这天我总是心神不宁，总希望这一天能像往常一样，平">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ohl8u210m.bkt.clouddn.com/xhzy.jpg">
-<meta property="og:updated_time" content="2018-07-26T16:17:05.298Z">
+<meta property="og:updated_time" content="2018-07-27T03:02:35.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="十二月十五">
 <meta name="twitter:description" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  今天是公历一月份最后一天，也是我的生日，要不是昨天老妈提醒我，我自己都要忘了。早上爸妈专门发红包，爸爸发了88，妈妈发了66，爸妈的意思我心里明白，美滋滋呀。算算自己23周岁了，真的是不小了。 不知道为什么，到生日这天我总是心神不宁，总希望这一天能像往常一样，平">
@@ -390,6 +390,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/31/post1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/01/31/post1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -522,6 +532,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -808,6 +821,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6WA3giEtacfNM9HXW1cDREaf-gzGzoHsz',
+        appKey: 'E7oCfyoHxuYq1dTIDJ1YkonA',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'/uploads/cz.jpg',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
