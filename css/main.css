@@ -1994,7 +1994,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #53ff20;
+  background: #9899b4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3300,7 +3300,7 @@ body {
 }
 .main-inner {
   margin-top: 20px;
-  padding: 10px 10px 10px 10px;
+  padding: 0px 1px 1px 0px;
 }
 .header {
   background: rgba(0,0,0,0) none repeat scroll !important;
